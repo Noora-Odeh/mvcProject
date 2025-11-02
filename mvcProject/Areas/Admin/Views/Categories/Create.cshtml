@@ -1,0 +1,30 @@
+﻿@using mvcProject.Models
+@model Category
+ <form method="post" action="/Admin/Categories/Store">
+<div class="form-group">
+    <label for="categoryName">Name</label>
+        <input type="text" name="name" value="@Model.Name" class="form-control" id="categoryName" placeholder="Enter Category" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+
+</div>
+    <button type="submit" class="btn btn-block btn-outline-success btn-sm mt-3">create</button>
+</form> 
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+ 
+@* @using (Html.BeginForm("Store", "Categories", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Category" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-block btn-outline-success btn-sm mt-3">Create</button>
+} 
+
+
+ *@

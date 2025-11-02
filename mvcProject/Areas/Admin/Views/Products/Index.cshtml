@@ -1,0 +1,30 @@
+﻿@using mvcProject.Models
+Using mvcProject.Models
+@model List<Product>
+<table class="table table-hover text-nowrap">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <img src="/images/@item.ImageUrl" width=50px />
+                <td>
+                    <a href="#" class="btn btn-outline-info">Details</a>
+                    <a href="/Admin/Products/Edit/@item.Id" class="btn btn-outline-warning">Edit</a>
+                    <a href="/Admin/Products/Remove/@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

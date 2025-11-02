@@ -1,0 +1,99 @@
+﻿@using mvcProject.Models
+@model Product
+ <form method="post" action="/Admin/Products/Store" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="productName">Name</label>
+        <input type="text" name="name" value="@Model.Name" class="form-control" id="productName" placeholder="Enter Product Name..." />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="productDescription">Description</label>
+        <textarea type="text" name="Description" class="form-control" id="productDescription" placeholder="Enter Description ...">@Model.Description</textarea>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="productPrice">Price</label>
+        <input type="text" name="Price" value="@Model.Price" class="form-control" id="productPrice" placeholder="Enter Price ..."/>
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="productQuantity">Quantity</label>
+        <input type="text" name="Quantity" value="@Model.Quantity" class="form-control" id="productQuantity" placeholder="Enter Quantity ..." />
+        <span class="text-danger" asp-validation-for="Quantity"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="productFile">Image</label>
+        <img src="/images/@Model.ImageUrl" width="100px"/>
+        <input type="file" name="file" class="form-control" id="productFile"/>
+        <span class="text-danger" asp-validation-for="ImageUrl"></span>
+    </div>
+
+    <select class="form-control" name="CategoryId">
+        @foreach(var item in ViewBag.Categories)
+        {
+            if(item.Id== Model.CategoryId)
+            {
+                <option selected value="@item.Id">@item.Name</option>
+            }
+            else
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+           
+        }
+)
+    </select>
+
+    <button type="submit" class="btn btn-block btn-outline-success btn-sm mt-3">create</button>
+</form> 
+
+@* 
+@using (Html.BeginForm("Store", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Product Name..." } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "form-label" })
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Enter Description..." })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Price..." } })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Quantity, new { @class = "form-label" })
+        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Quantity..." } })
+        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Image", "Image", new { @class = "form-label" })
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="/images/@Model.ImageUrl" width="100px" class="mb-2" />
+        }
+        <input type="file" name="file" class="form-control" id="productFile" />
+        @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryId, new { @class = "form-label" })
+        @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Categories, "Id", "Name", Model.CategoryId), "Select Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-block btn-outline-success btn-sm mt-3">Create</button>
+}
+ *@
