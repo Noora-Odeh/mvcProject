@@ -17,7 +17,7 @@ namespace mvcProject.Models
         [MinLength(20, ErrorMessage="Product description must be at least 20 characters.")]
         public string Description { get; set; }
         [ValidateNever]
-        public string ImageUrl { get; set; } 
+        public string? ImageUrl { get; set; } 
         [Range(0, int.MaxValue, ErrorMessage="Quantity cannot be negative.")]
         [Required(ErrorMessage="Product quantity is requiered.")]
         public int Quantity { get; set; }
